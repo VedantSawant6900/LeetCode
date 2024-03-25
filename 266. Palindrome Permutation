@@ -1,0 +1,19 @@
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        l=len(s)
+        d={}
+        for i in s:
+            if i in d:
+                d[i]+=1
+            else:
+                d[i]=1
+        flag=False
+        print(d)
+        for i in d:
+            if d[i]%2==1 and not flag and l%2==1:
+                flag=True
+            elif d[i]%2==0:
+                pass
+            else:
+                return False
+        return True
