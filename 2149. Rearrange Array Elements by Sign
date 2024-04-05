@@ -1,0 +1,24 @@
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        p=0
+        n=0
+        pl=[]
+        nl=[]
+        ans=[]
+        for i in nums:
+            if i < 0:
+                nl.append(i)
+                n+=1
+            elif i>0:
+                pl.append(i)
+                p+=1
+        i=0
+        while i < p and i < n:
+            ans.append(pl[i])
+            ans.append(nl[i])
+            i+=1
+        if i==p:
+            ans=ans+nl[i:]
+        elif i==n:
+            ans=ans+pl[i:]
+        return ans
