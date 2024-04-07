@@ -1,0 +1,13 @@
+class Solution:
+    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+        l=len(tickets)
+        total = l*tickets[k]
+        fdiff=0
+        great=0
+        for ind,i in enumerate(tickets):
+            diff=i-tickets[k]
+            if diff < 0:
+                fdiff=fdiff+diff
+                if ind > k:
+                    great+=1
+        return total + fdiff - (l-(k+1)-great)
