@@ -1,0 +1,15 @@
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        l1=len(str1)
+        l2=len(str2)
+        rem=l1 if l1<l2 else l2
+        div=l1 if l1>l2 else l2
+        while rem!=0:
+            remainder=div%rem
+            div=rem
+            rem=remainder
+        combined=str1+str2
+        if combined == str1[:div] * (len(combined)//div):
+            return str1[:div]
+        else:
+            return ""
