@@ -1,0 +1,17 @@
+class Solution:
+    def validWordAbbreviation(self, word: str, abbr: str) -> bool:
+        l=len(word)
+        num = "1234567890"
+        z=0
+        numb=""
+        for i,ele in enumerate(abbr):
+            if not ele.isdigit():
+                if numb:
+                    z=z+eval(numb)
+                if  (z>=l) or (z<l and ele != word[z]):
+                    return False
+                z+=1
+            else:
+                numb+=ele
+                
+        return True
