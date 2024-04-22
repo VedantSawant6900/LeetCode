@@ -1,0 +1,15 @@
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        splitt = s.split(" ")
+        assigned=[]
+        d={}
+        for i in range(len(pattern)):
+            if pattern[i] not in d and splitt[i] not in assigned:
+                d[pattern[i]] = splitt[i]
+                assigned.append(splitt[i])
+            elif not splitt[i] in assigned:
+                return False
+            else:
+                if splitt[i] != d[pattern[i]]:
+                    return False
+        return True
