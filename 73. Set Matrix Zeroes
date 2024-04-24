@@ -1,0 +1,15 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        m=len(matrix[0])
+        n=len(matrix)
+        copy=deepcopy(matrix)
+        for i,ele in enumerate(matrix):
+            for j,elej in enumerate(ele):
+                if elej == 0:
+                    copy[i]=m*[0]
+                    for z in range(n):
+                        copy[z][j] = 0
+        matrix[::]=copy
