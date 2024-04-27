@@ -1,0 +1,21 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        pillar=0
+        current=0
+        water=0
+        i=0
+        while i<len(height):
+            print(i,water)
+            if height[i] >= pillar:
+                pillar = height[i]
+                water=water+current
+                current=0
+                index=i
+            else:
+                current=current+pillar-height[i]
+            i+=1
+            if i ==len(height):
+                i=index+1
+                current=0
+                pillar=0
+        return water
