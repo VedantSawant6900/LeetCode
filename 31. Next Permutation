@@ -1,0 +1,24 @@
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        l=len(nums)
+        prev_val = nums[-1]
+        index = -2
+        flag = False
+        while index >= -1 * l:
+            cur_val = nums[index]
+            if prev_val > cur_val:
+                nums[index] = prev_val
+                nums[index+1] = cur_val
+                flag = True
+                break
+            prev_val = cur_val
+            index-=1
+        if index<-2 and flag:
+            end = nums[index+2:]
+            end.sort()
+            nums[::] = nums[-1 * l:index+1] + end
+            return
+        elif flag:
+            return
+        nums.sort()
+        
