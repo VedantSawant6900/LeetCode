@@ -1,0 +1,27 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        if x in range(-9,10):
+            return x 
+        st = str(x)
+        sign = False
+        if st[0] == '-':
+            sign=True
+            ans = st[1:][::-1]
+        elif st[0] != '-':
+            ans = st[::-1]
+
+        print(ans)
+        c=-1
+        for i in ans:
+            print(i)
+            if i=='0':
+                print("add")
+                c+=1
+            else:
+                break
+        ans = eval(ans[c+1:])
+        if ans < -2147483648 or ans > 2147483647:
+            return 0
+        if sign == True:
+            return -1 * ans
+        return ans
