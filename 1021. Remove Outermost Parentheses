@@ -1,0 +1,20 @@
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        s=[*s]
+        copy=deepcopy(s)
+        stack = []
+        c=0
+        rem=0
+        for i,ele in enumerate(s):
+            if ele == '(':
+                stack.append([ele,i])
+                c+=1
+            elif ele == ')':
+                openb = stack.pop(-1)
+                c-=1
+                if c==0:
+                    copy.pop(openb[1]-rem)
+                    rem+=1
+                    copy.pop(i-rem)
+                    rem+=1
+        return "".join(copy)
