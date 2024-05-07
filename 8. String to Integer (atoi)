@@ -1,0 +1,27 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        s=s.strip()
+        sign=1
+        number = ""
+        flag=False
+        for i in s:
+            if i == '-' and flag==False:
+                sign=0
+                flag=True
+                continue
+            if i== '+' and flag == False:
+                flag=True
+                continue
+            elif i.isdigit():
+                number=number+i
+                flag=True
+            else:
+                break
+        if number == "":
+            return 0
+        ans = int(number) if sign else  -1*int(number)
+        if ans < -1*pow(2,31):
+            ans= -1*pow(2,31)
+        elif ans > pow(2,31)-1:
+            ans = pow(2,31)-1
+        return ans
