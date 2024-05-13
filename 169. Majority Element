@@ -1,0 +1,18 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+
+        c = 0 
+        ele = None
+        for i in nums:
+            if ele is None:
+                ele=i
+                c+=1
+                continue
+            if i == ele:
+                c+=1
+            else:
+                c-=1
+                if c==0:
+                    ele=i
+                    c+=1
+        return ele
