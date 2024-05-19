@@ -1,0 +1,9 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        ans=pow(x,n)
+        return ans
+
+    def pow(x,n):
+        if n==0:
+            return 1
+        return x*pow(x,n-1)
