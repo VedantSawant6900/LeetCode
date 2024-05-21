@@ -1,0 +1,38 @@
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        nums.sort()
+        i=0
+        j=1
+        k=2
+        n=len(nums)
+        l=n-1
+        ans=[]
+        while i<l:
+            while j<l:
+                while k<l:
+                    add=nums[i]+nums[j]+nums[k]+nums[l]
+                    if add < target:
+                        k+=1
+                    elif add > target:
+                        l-=1
+                    else:
+                        ans.append([nums[i],nums[j],nums[k],nums[l]])
+                        prevk=nums[k]
+                        while nums[k]==prevk and k<l:
+                            k+=1
+                        prevl=nums[l]
+                        while nums[l]==prevl and l>j:
+                            l-=1
+                        flag=True
+                l=n-1
+                prevj=nums[j]
+                while nums[j]==prevj and j<l:
+                    j+=1
+                k=j+1
+            l=n-1
+            previ=nums[i]
+            while previ==nums[i] and i<l:
+                i+=1
+            j=i+1
+            k=j+1
+        return ans
