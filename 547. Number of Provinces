@@ -1,0 +1,24 @@
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        adj={}
+        for i in range(len(isConnected)):
+            adj[i] = []
+        for i,elei in enumerate(isConnected):
+            for j,elej in zip(range(i,len(isConnected)),elei[i:]):
+                if i!=j and elej == 1:
+                    adj[i].append(j)
+                    adj[j].append(i)
+        v=[0]*len(isConnected)
+        c=0
+        for i in adj:
+            print(i)
+            if not v[i]:
+                q=[i]
+                while q:
+                    current = q.pop(0)
+                    for j in adj[current]:
+                        if not v[j]:
+                            q.append(j)
+                    v[current]=1
+                c+=1
+        return c
