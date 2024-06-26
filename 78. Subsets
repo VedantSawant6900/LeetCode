@@ -1,0 +1,10 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        ans=[]
+        for i in range(2**len(nums)):
+            ans.append([])
+            binary = bin(i)
+            for j in range(len(binary)):
+                if (int(binary,2) & (1<<j)) != 0:
+                    ans[-1].append(nums[j])
+        return ans
