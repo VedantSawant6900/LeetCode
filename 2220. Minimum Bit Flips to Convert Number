@@ -1,0 +1,5 @@
+class Solution:
+    def minBitFlips(self, start: int, goal: int) -> int:
+       answer = start ^ goal
+
+       return bin(answer).count('1')
