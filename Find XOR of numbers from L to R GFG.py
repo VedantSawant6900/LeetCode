@@ -2,19 +2,19 @@
 
 class Solution:
     def findXOR(self, l, r):
-        s1=0
-        s2=0
-        i=l
-        j=r
-        while i<j:
-            s1=s1^i
-            s2=s2^j
-            i+=1
-            j-=1
-        if i==j:
-            return s1^s2^i
-        else:
-            return s1^s2
+        def rangexor(n):
+            if n%4==0:
+                return n
+            elif n%4==1:
+                return 1
+            elif n%4==3:
+                return 0
+            else:
+                return n+1
+        
+        lxor = rangexor(l-1)
+        rxor = rangexor(r)
+        return lxor^rxor
 
 #{ 
  # Driver Code Starts
