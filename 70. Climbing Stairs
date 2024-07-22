@@ -1,9 +1,19 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        def count(ind):
-            if ind==0:
-                return 1
-            elif ind==1:
-                return 1
-            return count(ind-1)+count(ind-2)
-        return count(n)
+        dp=[-1]*(n+1)
+        dp[0]=1
+        dp[1]=1
+        def fact(n):
+            if dp[n]!=-1:
+                return dp[n]
+            dp[n]=n*fact(n-1)
+            return dp[n]
+        s=0
+        twos=n//2
+        ones=0 if n%2==0 else 1
+        while twos!=-1:
+            ways=fact(twos+ones)/(fact(twos)*fact(ones))
+            s=s+ways
+            twos-=1
+            ones+=2
+        return int(s)
