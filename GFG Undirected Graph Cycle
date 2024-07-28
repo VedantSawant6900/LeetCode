@@ -1,0 +1,30 @@
+class Solution:
+	def isCycle(self, V, adj):
+		print(adj)
+		visited=[0]*V
+		queue=[(0,None)]
+		def bfs(flag):
+			if not flag:
+				return flag
+			current,prev=queue.pop(0)
+			for i in adj[current]:
+				if i==prev:
+					continue
+				if visited[i]:
+					flag=False
+					return flag
+				else:
+					visited[i]=1
+					queue.append([i,current])
+			if not flag:
+				return flag
+			if queue:
+				flag = bfs(flag)
+				return flag
+			else:
+				return True
+		f=bfs(True)
+		return f
+
+obj=Solution()
+print(obj.isCycle(5,[[1], [0, 2, 4], [1,3], [2,4], [1,1]] ))
