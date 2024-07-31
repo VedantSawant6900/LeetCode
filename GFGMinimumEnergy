@@ -1,0 +1,20 @@
+class Solution:
+    def minimumEnergy(self, height, n):
+        def f(current,ind,mine):
+            if ind==0:
+                if current<mine:
+                    mine=current
+            elif ind<0:
+                return mine
+            mine=f(current+abs(height[ind]-height[ind-1]),ind-1,mine)
+            mine=f(current+abs(height[ind]-height[ind-2]),ind-2,mine)
+            return mine
+        print(f(0,n-1,100000))
+
+
+
+
+
+
+obj=Solution()
+obj.minimumEnergy([10, 20, 30, 10],4)
